@@ -28,10 +28,10 @@ function init() {
 		div = document.createElement("div");
 		div.setAttribute("class", "appendedDivs");
 		game.appendChild(div);
-
 	}
 
 	initPressedKeysDiv();
+	initRemainingChances();
 
 	return word;
 
@@ -42,6 +42,11 @@ function init() {
 	function initPressedKeysDiv() {
 		let pressed = document.getElementById("keys");
 		pressed.innerHTML = "Press any key to get started!";
+	}
+
+	function initRemainingChances() {
+		let remaining = document.getElementById("remainingChances");
+		remaining.innerHTML = "Chances remaining: " + chances;
 	}
 
 }
@@ -107,6 +112,8 @@ document.onkeyup = function(event) {
 		incorrectGuesses.push(selectedkey);
 		pressed.innerHTML = "Incorrect Guesses: " + incorrectGuesses.toString();
 		chances--;
+		let remaining = document.getElementById("remainingChances");
+		remaining.innerHTML = "Chances remaining: " + chances;
 	}
 
 	booleanFlag = false;
